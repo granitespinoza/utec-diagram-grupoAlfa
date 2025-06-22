@@ -1,0 +1,190 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Sistema de colores UTEC y efectos acuarela */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Variables UTEC */
+    --utec-cyan: #00A9E0;
+    --utec-deep: #0073B1;
+    --utec-light: #8ED6F4;
+    --utec-grafito: #1D1D1D;
+    --blanco: #FFFFFF;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-ibm-plex;
+  }
+}
+
+/* Efecto de fondo acuarela UTEC */
+.watercolor-bg {
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 169, 224, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 115, 177, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(142, 214, 244, 0.08) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(0, 169, 224, 0.02) 0%, rgba(0, 115, 177, 0.02) 100%);
+  position: relative;
+}
+
+.watercolor-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(0, 169, 224, 0.1), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(142, 214, 244, 0.1), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(0, 115, 177, 0.1), transparent);
+  background-size: 100px 100px, 120px 120px, 110px 110px;
+  pointer-events: none;
+}
+
+/* Efectos para tarjetas y componentes UTEC */
+.utec-card {
+  background: var(--utec-grafito);
+  border-radius: 24px;
+  box-shadow: 
+    0 8px 32px rgba(0, 169, 224, 0.1),
+    0 4px 16px rgba(0, 115, 177, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 169, 224, 0.1);
+}
+
+.utec-button-primary {
+  background: linear-gradient(135deg, var(--utec-cyan) 0%, var(--utec-deep) 100%);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 169, 224, 0.3);
+}
+
+.utec-button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 169, 224, 0.4);
+}
+
+.utec-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 169, 224, 0.2);
+  border-radius: 12px;
+  color: white;
+}
+
+.utec-input:focus {
+  border-color: var(--utec-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 169, 224, 0.1);
+}
+
+/* Animaciones sutiles */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-cyan {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 169, 224, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 169, 224, 0); }
+}
+
+.pulse-cyan {
+  animation: pulse-cyan 2s infinite;
+}
+
+/* CodeMirror styling */
+.cm-gutters {
+  background: var(--utec-grafito) !important;
+  color: var(--utec-light) !important;
+  border-right: 1px solid var(--utec-deep) !important;
+  font-family: "IBM Plex Mono", monospace !important;
+}
+
+.cm-activeLine {
+  background: rgba(0, 169, 224, 0.08) !important;
+}
+
+.cm-content {
+  font-family: "IBM Plex Mono", monospace !important;
+  line-height: 1.4 !important;
+}
+
+.cm-lineNumbers .cm-gutterElement {
+  color: var(--utec-light) !important;
+  font-weight: 500;
+}
+
+.cm-focused .cm-activeLine {
+  background: rgba(0, 169, 224, 0.12) !important;
+}
+
+.cm-editor {
+  border-radius: 8px;
+  overflow: hidden;
+}
